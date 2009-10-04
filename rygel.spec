@@ -5,7 +5,7 @@ Name:           rygel
 Version:        0.4.2
 Release:        %mkrel 1
 Summary:        A UPnP v2 Media Server
-Group:          Applications/Multimedia
+Group:          Sound
 License:        LGPLv2+
 URL:            http://live.gnome.org/Rygel
 Source0:        ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/0.4/%{name}-%{version}.tar.bz2
@@ -33,7 +33,7 @@ in Vala language. The project was previously known as gupnp-media-server.
 
 %package devel
 Summary: Development package for %{name}
-Group: Development/Libraries
+Group: Development/Other
 Requires: %{name} = %{version}-%{release}
 Requires: pkgconfig
 
@@ -42,7 +42,7 @@ Files for development with %{name}.
 
 %package tracker
 Summary: Tracker plugin for %{name}
-Group: Applications/Multimedia
+Group: Sound
 Requires: %{name} = %{version}-%{release}
 Requires: tracker
 
