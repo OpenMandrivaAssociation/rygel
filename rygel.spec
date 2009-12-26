@@ -3,14 +3,15 @@
 
 Name:           rygel
 Version:        0.4.2
-Release:        %mkrel 1
+Release:        %mkrel 2
 Summary:        A UPnP v2 Media Server
 Group:          Sound
 License:        LGPLv2+
 URL:            http://live.gnome.org/Rygel
 Source0:        ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/0.4/%{name}-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-# https://bugzilla.gnome.org/show_bug.cgi?id=596211
+# (fc) 0.4.2-2mdv adapt to libgee 0.5 (GIT)
+Patch0:		rygel-0.4.2-libgee05.patch
 
 BuildRequires: dbus-glib-devel
 BuildRequires: desktop-file-utils
@@ -19,7 +20,7 @@ BuildRequires: gtk2-devel
 BuildRequires: gupnp-devel
 BuildRequires: gupnp-av-devel
 BuildRequires: gupnp-vala
-BuildRequires: libgee-devel
+BuildRequires: libgee-devel >= 0.5
 BuildRequires: libsoup-devel
 BuildRequires: libuuid-devel
 BuildRequires: sqlite-devel
@@ -51,9 +52,12 @@ A plugin for rygel to use tracker to locate media on the local machine.
 
 %prep
 %setup -q
+%patch0 -p1 -b .libgee05
+
 
 %build
-%configure --enable-tracker-plugin --enable-media-export-plugin --enable-external-plugin --enable-mediathek-plugin --enable-gstlaunch-plugin --disable-silent-rules
+# add --enable-vala for patch0 (libgee05 support)
+%configure2_5x --enable-tracker-plugin --enable-media-export-plugin --enable-external-plugin --enable-mediathek-plugin --enable-gstlaunch-plugin --disable-silent-rules --enable-vala
 %make
 
 %install
