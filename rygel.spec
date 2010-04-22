@@ -2,16 +2,14 @@
 %define _disable_ld_as_needed 1
 
 Name:           rygel
-Version:        0.4.2
-Release:        %mkrel 2
+Version:        0.4.12
+Release:        %mkrel 1
 Summary:        A UPnP v2 Media Server
 Group:          Sound
 License:        LGPLv2+
 URL:            http://live.gnome.org/Rygel
 Source0:        ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/0.4/%{name}-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-# (fc) 0.4.2-2mdv adapt to libgee 0.5 (GIT)
-Patch0:		rygel-0.4.2-libgee05.patch
 
 BuildRequires: dbus-glib-devel
 BuildRequires: desktop-file-utils
@@ -52,12 +50,10 @@ A plugin for rygel to use tracker to locate media on the local machine.
 
 %prep
 %setup -q
-%patch0 -p1 -b .libgee05
 
 
 %build
-# add --enable-vala for patch0 (libgee05 support)
-%configure2_5x --enable-tracker-plugin --enable-media-export-plugin --enable-external-plugin --enable-mediathek-plugin --enable-gstlaunch-plugin --disable-silent-rules --enable-vala
+%configure2_5x --enable-tracker-plugin --enable-media-export-plugin --enable-external-plugin --enable-mediathek-plugin --enable-gstlaunch-plugin --disable-silent-rules 
 %make
 
 %install
@@ -82,8 +78,8 @@ rm -rf %{buildroot}
 %{_bindir}/rygel-preferences
 %{_libdir}/rygel-1.0/librygel-external.so
 %{_libdir}/rygel-1.0/librygel-media-export.so
-%{_libdir}/rygel-1.0/librygel-gstlaunch.so
 %{_libdir}/rygel-1.0/librygel-mediathek.so
+%{_libdir}/rygel-1.0/librygel-gst-renderer.so
 %{_datadir}/rygel/
 %{_datadir}/applications/rygel*
 %{_datadir}/dbus-1/services/org.gnome.Rygel1.service
