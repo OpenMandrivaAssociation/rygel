@@ -3,7 +3,7 @@
 
 Name:           rygel
 Version:        0.4.12
-Release:        %mkrel 1
+Release:        %mkrel 2
 Summary:        A UPnP v2 Media Server
 Group:          Sound
 License:        LGPLv2+
