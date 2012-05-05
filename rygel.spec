@@ -61,7 +61,6 @@ A plugin for rygel to use tracker to locate media on the local machine.
 
 %build
 %configure2_5x \
-	--enable-vala \
         --disable-media-export-plugin \
 	--enable-test-plugin \
 	--enable-tracker-plugin \
