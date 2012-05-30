@@ -1,7 +1,7 @@
 %define url_ver %(echo %{version} | cut -d. -f1,2)
 
 Name:           rygel
-Version:        0.15.0
+Version:        0.15.0.1
 Release:        1
 Summary:        A UPnP v2 Media Server
 Group:          Sound
