@@ -102,6 +102,6 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 %files devel
 %{_includedir}/rygel-1.0/
-%{_libdir}/pkgconfig/rygel-1.0.pc
+%{_libdir}/pkgconfig/*.pc
 %{_datadir}/vala/vapi/rygel-1.0.deps
 %{_datadir}/vala/vapi/rygel-1.0.vapi
