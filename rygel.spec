@@ -1,33 +1,34 @@
 %define url_ver %(echo %{version} | cut -d. -f1,2)
 
-Name:           rygel
-Version:        0.15.1
-Release:        1
-Summary:        A UPnP v2 Media Server
-Group:          Sound
-License:        LGPLv2+
-URL:            http://live.gnome.org/Rygel
-Source0:        http://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
-BuildRequires: pkgconfig(gee-1.0) >= 0.5.2
-BuildRequires: pkgconfig(gio-2.0) >= 2.26
-BuildRequires: pkgconfig(gssdp-1.0) >= 0.11.0
-BuildRequires: pkgconfig(gssdp-1.0) <= 0.12.9999
-BuildRequires: pkgconfig(gstreamer-0.10) >= 0.10.35
-BuildRequires: pkgconfig(gstreamer-app-0.10) >= 0.10.28
-BuildRequires: pkgconfig(gstreamer-base-0.10) >= 0.10.35
-BuildRequires: pkgconfig(gstreamer-pbutils-0.10) >= 0.10.35
-BuildRequires: pkgconfig(gstreamer-tag-0.10) >= 0.10.28
-BuildRequires: pkgconfig(gtk+-3.0) >= 2.90.3
-BuildRequires: pkgconfig(gupnp-1.0) >= 0.17.1
-BuildRequires: pkgconfig(gupnp-av-1.0) >= 0.9.0
-BuildRequires: pkgconfig(gupnp-vala-1.0) >= 0.10.2
-BuildRequires: pkgconfig(gupnp-dlna-1.0) >= 0.6.6
-BuildRequires: pkgconfig(libsoup-2.4) >= 2.34.0
-BuildRequires: pkgconfig(sqlite3) >= 3.5
-BuildRequires: pkgconfig(uuid) >= 1.41.3
-BuildRequires:	tracker-devel
+Name:		rygel
+Version:	0.16.1
+Release:	1
+Summary:	A UPnP v2 Media Server
+Group:		Sound
+License:	LGPLv2+
+URL:		http://live.gnome.org/Rygel
+Source0:	http://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
+
 BuildRequires:	intltool
 BuildRequires:	vala >= 0.14.1
+BuildRequires:	tracker-devel
+BuildRequires:	pkgconfig(gee-1.0) >= 0.5.2
+BuildRequires:	pkgconfig(gio-2.0) >= 2.26
+BuildRequires:	pkgconfig(gssdp-1.0) >= 0.11.0
+BuildRequires:	pkgconfig(gssdp-1.0) <= 0.12.9999
+BuildRequires:	pkgconfig(gstreamer-0.10) >= 0.10.35
+BuildRequires:	pkgconfig(gstreamer-app-0.10) >= 0.10.28
+BuildRequires:	pkgconfig(gstreamer-base-0.10) >= 0.10.35
+BuildRequires:	pkgconfig(gstreamer-pbutils-0.10) >= 0.10.35
+BuildRequires:	pkgconfig(gstreamer-tag-0.10) >= 0.10.28
+BuildRequires:	pkgconfig(gtk+-3.0) >= 2.90.3
+BuildRequires:	pkgconfig(gupnp-1.0) >= 0.17.1
+BuildRequires:	pkgconfig(gupnp-av-1.0) >= 0.9.0
+BuildRequires:	pkgconfig(gupnp-vala-1.0) >= 0.10.2
+BuildRequires:	pkgconfig(gupnp-dlna-1.0) >= 0.6.6
+BuildRequires:	pkgconfig(libsoup-2.4) >= 2.34.0
+BuildRequires:	pkgconfig(sqlite3) >= 3.5
+BuildRequires:	pkgconfig(uuid) >= 1.41.3
 Requires:	shared-mime-info
 Requires:	gstreamer0.10-plugins-good
 Requires:	gstreamer0.10-ffmpeg
