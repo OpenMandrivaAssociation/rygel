@@ -7,12 +7,12 @@
 
 Summary:	A UPnP v2 Media Server
 Name:		rygel
-Version:	0.16.3
+Version:	0.17.7
 Release:	1
 Group:		Sound
 License:	LGPLv2+
 URL:		http://live.gnome.org/Rygel
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
+Source0:	ftp://ftp.gnome.org:21/pub/GNOME/sources/rygel/0.17/%{name}-%{version}.tar.xz
 
 BuildRequires:	intltool
 BuildRequires:	vala >= 0.14.1
@@ -125,4 +125,5 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %{_libdir}/pkgconfig/rygel-renderer-1.0.pc
 %{_libdir}/pkgconfig/rygel-server-1.0.pc
 %{_datadir}/vala/vapi/*
+
 

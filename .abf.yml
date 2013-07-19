@@ -1,3 +1,4 @@
----
-sources:
+removed_sources:
   rygel-0.16.3.tar.xz: b1b8b256cf8f9738e9342668b0d66a00d8f2e533
+sources:
+  rygel-0.17.7.tar.xz: ff906901ec332b35a285e394ad7984db1994d195
