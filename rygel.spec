@@ -8,7 +8,7 @@
 Summary:	A UPnP v2 Media Server
 Name:		rygel
 Version:	0.16.3
-Release:	1
+Release:	2
 Group:		Sound
 License:	LGPLv2+
 URL:		http://live.gnome.org/Rygel
