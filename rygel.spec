@@ -28,7 +28,7 @@ BuildRequires:	pkgconfig(gstreamer-tag-1.0)
 BuildRequires:	pkgconfig(gtk+-3.0) >= 2.90.3
 BuildRequires:	pkgconfig(gupnp-1.0) >= 0.17.1
 BuildRequires:	pkgconfig(gupnp-av-1.0) >= 0.9.0
-BuildRequires:	pkgconfig(gupnp-dlna-1.0) >= 0.5.0
+BuildRequires:	pkgconfig(gupnp-dlna-2.0)
 BuildRequires:	pkgconfig(libsoup-2.4) >= 2.34.0
 BuildRequires:	pkgconfig(sqlite3) >= 3.5
 BuildRequires:	pkgconfig(tracker-sparql-1.0)
