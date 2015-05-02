@@ -7,7 +7,7 @@
 
 Summary:	A UPnP v2 Media Server
 Name:		rygel
-Version:	 0.26.0
+Version:	0.26.0
 Release:	2
 Group:		Sound
 License:	LGPLv2+
@@ -19,27 +19,26 @@ BuildRequires:	vala >= 0.14.1
 BuildRequires:	pkgconfig(gee-1.0) >= 0.5.2
 BuildRequires:	pkgconfig(gio-2.0) >= 2.26
 BuildRequires:	pkgconfig(gssdp-1.0) >= 0.11.0
-BuildRequires:	pkgconfig(gssdp-1.0) <= 0.12.9999
-BuildRequires:	pkgconfig(gstreamer-0.10) >= 0.10.35
-BuildRequires:	pkgconfig(gstreamer-app-0.10) >= 0.10.28
-BuildRequires:	pkgconfig(gstreamer-base-0.10) >= 0.10.35
-BuildRequires:	pkgconfig(gstreamer-pbutils-0.10) >= 0.10.35
-BuildRequires:	pkgconfig(gstreamer-tag-0.10) >= 0.10.28
+BuildRequires:	pkgconfig(gssdp-1.0)
+BuildRequires:	pkgconfig(gstreamer-1.0)
+BuildRequires:	pkgconfig(gstreamer-app-1.0)
+BuildRequires:	pkgconfig(gstreamer-base-1.0)
+BuildRequires:	pkgconfig(gstreamer-pbutils-1.0)
+BuildRequires:	pkgconfig(gstreamer-tag-1.0)
 BuildRequires:	pkgconfig(gtk+-3.0) >= 2.90.3
 BuildRequires:	pkgconfig(gupnp-1.0) >= 0.17.1
 BuildRequires:	pkgconfig(gupnp-av-1.0) >= 0.9.0
 BuildRequires:	pkgconfig(gupnp-dlna-1.0) >= 0.5.0
-BuildRequires:	pkgconfig(gupnp-vala-1.0) >= 0.10.2
 BuildRequires:	pkgconfig(libsoup-2.4) >= 2.34.0
 BuildRequires:	pkgconfig(sqlite3) >= 3.5
-BuildRequires:	pkgconfig(tracker-sparql-0.14)
+BuildRequires:	pkgconfig(tracker-sparql-1.0)
 BuildRequires:	pkgconfig(uuid) >= 1.41.3
 
 Requires:	shared-mime-info
-Requires:	gstreamer0.10-plugins-good
-Requires:	gstreamer0.10-ffmpeg
-Requires:	gstreamer0.10-plugins-bad
-Requires:	gstreamer0.10-plugins-ugly
+Requires:	gstreamer1.0-plugins-good
+Requires:	gstreamer1.0-libav
+Requires:	gstreamer1.0-plugins-bad
+Requires:	gstreamer1.0-plugins-ugly
 
 %description
 Rygel is an implementation of the UPnP MediaServer V 2.0 specification that is
@@ -74,7 +73,7 @@ A plugin for rygel to use tracker to locate media on the local machine.
 %setup -q
 
 %build
-%configure2_5x \
+%configure \
 	--disable-media-export-plugin \
 	--enable-test-plugin \
 	--enable-tracker-plugin \
@@ -118,7 +117,7 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %files -n %{libname}
 %{_libdir}/lib*-%{api}.so.%{major}*
 
-%files devel
+%files -n %{devname}
 %{_libdir}/*.so
 %{_includedir}/rygel-1.0/
 %{_libdir}/pkgconfig/rygel-core-1.0.pc
