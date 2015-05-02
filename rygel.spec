@@ -7,7 +7,7 @@
 
 Summary:	A UPnP v2 Media Server
 Name:		rygel
-Version:	0.16.3
+Version:	 0.26.0
 Release:	2
 Group:		Sound
 License:	LGPLv2+
@@ -42,9 +42,9 @@ Requires:	gstreamer0.10-plugins-bad
 Requires:	gstreamer0.10-plugins-ugly
 
 %description
-Rygel is an implementation of the UPnP MediaServer V 2.0 specification that is 
-specifically designed for GNOME. It is based on GUPnP and is written (mostly) 
-in Vala language. The project was previously known as gupnp-media-server. 
+Rygel is an implementation of the UPnP MediaServer V 2.0 specification that is
+specifically designed for GNOME. It is based on GUPnP and is written (mostly)
+in Vala language. The project was previously known as gupnp-media-server.
 
 %package -n %{libname}
 Summary:	Shared libraries for %{name}
@@ -82,7 +82,7 @@ A plugin for rygel to use tracker to locate media on the local machine.
 	--enable-mediathek-plugin \
 	--enable-gst-launch-plugin \
 	--enable-playbin-plugin \
-	--disable-silent-rules 
+	--disable-silent-rules
 
 %make
 
