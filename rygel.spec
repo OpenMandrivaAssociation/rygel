@@ -16,7 +16,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{ver
 
 BuildRequires:	intltool
 BuildRequires:	vala >= 0.14.1
-BuildRequires:	pkgconfig(gee-1.0) >= 0.5.2
+BuildRequires:	pkgconfig(gee-0.8)
 BuildRequires:	pkgconfig(gio-2.0) >= 2.26
 BuildRequires:	pkgconfig(gssdp-1.0) >= 0.11.0
 BuildRequires:	pkgconfig(gssdp-1.0)
