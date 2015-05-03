@@ -38,6 +38,7 @@ BuildRequires:	pkgconfig(libmediaart-2.0)
 BuildRequires:	pkgconfig(libsoup-2.4) >= 2.34.0
 BuildRequires:	pkgconfig(sqlite3) >= 3.5
 BuildRequires:	pkgconfig(uuid) >= 1.41.3
+BuildRequires:	pkgconfig(tracker-sparql-1.0)
 
 Requires:	shared-mime-info
 Requires:	gstreamer1.0-plugins-good
