@@ -24,22 +24,21 @@ BuildRequires:	intltool
 BuildRequires:	vala >= 0.14.1
 BuildRequires:	pkgconfig(gee-0.8)
 BuildRequires:	pkgconfig(gio-2.0) >= 2.26
-BuildRequires:	pkgconfig(gssdp-1.0) >= 0.11.0
-BuildRequires:	pkgconfig(gssdp-1.0)
+BuildRequires:	pkgconfig(gssdp-1.2)
 BuildRequires:	pkgconfig(gstreamer-1.0)
 BuildRequires:	pkgconfig(gstreamer-app-1.0)
 BuildRequires:	pkgconfig(gstreamer-base-1.0)
 BuildRequires:	pkgconfig(gstreamer-pbutils-1.0)
 BuildRequires:	pkgconfig(gstreamer-tag-1.0)
 BuildRequires:	pkgconfig(gtk+-3.0) >= 2.90.3
-BuildRequires:	pkgconfig(gupnp-1.0) >= 0.17.1
+BuildRequires:	pkgconfig(gupnp-1.2)
 BuildRequires:	pkgconfig(gupnp-av-1.0) >= 0.9.0
 BuildRequires:	pkgconfig(gupnp-dlna-2.0)
 BuildRequires:	pkgconfig(libmediaart-2.0)
 BuildRequires:	pkgconfig(libsoup-2.4) >= 2.34.0
 BuildRequires:	pkgconfig(sqlite3) >= 3.5
 BuildRequires:	pkgconfig(uuid) >= 1.41.3
-BuildRequires:	pkgconfig(tracker-sparql-1.0)
+BuildRequires:	pkgconfig(tracker-sparql-2.0)
 
 Requires:	shared-mime-info
 Requires:	gstreamer1.0-plugins-good
