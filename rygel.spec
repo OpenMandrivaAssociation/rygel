@@ -148,12 +148,12 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %{_libdir}/lib*-%{api}.so.%{major}*
 
 %files -n %{libruihname}
-#{_libdir}/librygel-ruih-%{ruihapi}.so.%{ruihmajor}*
+%{_libdir}/librygel-ruih-%{ruihapi}.so.%{ruihmajor}*
 
 %files -n %{devname}
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/%{name}-*-%{api}.pc
-%{_libdir}/pkgconfig/%{name}-ruih-%{api_ruih}.pc
+#{_libdir}/pkgconfig/%{name}-ruih-%{api_ruih}.pc
 %{_includedir}/%{name}-%{api}
 %{_datadir}/vala/vapi/*
 %{_datadir}/gir-1.0/RygelCore-%{girapi}.gir
