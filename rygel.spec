@@ -107,6 +107,7 @@ GObject Introspection interface library for %{name}.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 %meson
