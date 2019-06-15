@@ -43,7 +43,6 @@ BuildRequires:	pkgconfig(libmediaart-2.0)
 BuildRequires:	pkgconfig(libsoup-2.4) >= 2.34.0
 BuildRequires:	pkgconfig(sqlite3) >= 3.5
 BuildRequires:	pkgconfig(uuid) >= 1.41.3
-BuildRequires:	xsltproc
 BuildRequires:	pkgconfig(tracker-sparql-2.0)
 BuildRequires:	tracker-vala
 
@@ -130,7 +129,7 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 #{_iconsdir}/*/*/*/*
 %{_datadir}/dbus-1/services/org.gnome.Rygel1.service
 %{_userunitdir}/%{name}.service
-%{_mandir}/man?/%{name}*
+#{_mandir}/man?/%{name}*
 
 %dir %{_libdir}/%{name}-%{api}
 %dir %{_libdir}/%{name}-%{api}/plugins
