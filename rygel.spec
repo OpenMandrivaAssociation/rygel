@@ -4,8 +4,11 @@
 
 %define api	2.6
 %define major	2
+%define girapi		2.6
 %define libname %mklibname %{name} %{api} %{major}
 %define devname %mklibname %{name} %{api} -d
+%define girname		%mklibname %{name}-gir %{girapi}
+
 
 %define ruihapi 2.0
 %define ruihmajor 1
