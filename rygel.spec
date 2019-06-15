@@ -21,7 +21,9 @@ URL:		http://live.gnome.org/Rygel
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:	intltool
+BuildRequires:	meson
 BuildRequires:	vala >= 0.14.1
+BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(gee-0.8)
 BuildRequires:	pkgconfig(gio-2.0) >= 2.26
 BuildRequires:	pkgconfig(gssdp-1.2)
@@ -79,20 +81,11 @@ Files for development with %{name}.
 %setup -q
 
 %build
-%configure \
-	--disable-media-export-plugin \
-	--enable-test-plugin \
-	--enable-external-plugin \
-	--enable-mediathek-plugin \
-	--enable-gst-launch-plugin \
-	--enable-playbin-plugin \
-	--disable-introspection \
-	--disable-silent-rules LIBS='-lxml2'
-
-%make
+%meson
+%meson_build
 
 %install
-%makeinstall_std
+%meson_install
 
 %find_lang %{name} --with-gnome --with-html
 
