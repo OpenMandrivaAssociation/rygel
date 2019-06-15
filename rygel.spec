@@ -4,8 +4,11 @@
 
 %define api	2.6
 %define major	2
+%define girapi		2.6
 %define libname %mklibname %{name} %{api} %{major}
 %define devname %mklibname %{name} %{api} -d
+%define girname		%mklibname %{name}-gir %{girapi}
+
 
 %define ruihapi 2.0
 %define ruihmajor 1
@@ -13,33 +16,37 @@
 
 Summary:	A UPnP v2 Media Server
 Name:		rygel
-Version:	0.28.2
-Release:	2
+Version:	0.38.1
+Release:	1
 Group:		Sound
 License:	LGPLv2+
 URL:		http://live.gnome.org/Rygel
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
+Patch1:		rygel-0.38.0-fix-icons-path-with-meson.patch
+Patch2:		rygel-0.38.0-fix-illegal-char-in-pkgconfig-files.patch
 
 BuildRequires:	intltool
+BuildRequires:	meson
 BuildRequires:	vala >= 0.14.1
+BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(gee-0.8)
 BuildRequires:	pkgconfig(gio-2.0) >= 2.26
-BuildRequires:	pkgconfig(gssdp-1.0) >= 0.11.0
-BuildRequires:	pkgconfig(gssdp-1.0)
+BuildRequires:	pkgconfig(gssdp-1.2)
 BuildRequires:	pkgconfig(gstreamer-1.0)
 BuildRequires:	pkgconfig(gstreamer-app-1.0)
 BuildRequires:	pkgconfig(gstreamer-base-1.0)
 BuildRequires:	pkgconfig(gstreamer-pbutils-1.0)
 BuildRequires:	pkgconfig(gstreamer-tag-1.0)
 BuildRequires:	pkgconfig(gtk+-3.0) >= 2.90.3
-BuildRequires:	pkgconfig(gupnp-1.0) >= 0.17.1
+BuildRequires:	pkgconfig(gupnp-1.2)
 BuildRequires:	pkgconfig(gupnp-av-1.0) >= 0.9.0
 BuildRequires:	pkgconfig(gupnp-dlna-2.0)
 BuildRequires:	pkgconfig(libmediaart-2.0)
 BuildRequires:	pkgconfig(libsoup-2.4) >= 2.34.0
 BuildRequires:	pkgconfig(sqlite3) >= 3.5
 BuildRequires:	pkgconfig(uuid) >= 1.41.3
-BuildRequires:	pkgconfig(tracker-sparql-1.0)
+BuildRequires:	pkgconfig(tracker-sparql-2.0)
+BuildRequires:	tracker-vala
 
 Requires:	shared-mime-info
 Requires:	gstreamer1.0-plugins-good
@@ -70,47 +77,75 @@ Shared libraries for %{name}.
 %package -n %{devname}
 Summary:	Development package for %{name}
 Group:		Development/Other
+Requires:	%{name} = %{version}-%{release}
 Requires:	%{libname} = %{version}-%{release}
 Requires:	%{libruihname} = %{version}-%{release}
+Requires:	%{girname} = %{version}-%{release}
 
 %description -n %{devname}
 Files for development with %{name}.
 
+%package tracker
+Summary:	Tracker plugin for %{name}
+Group:		Sound/Utilities
+Requires:	%{name} = %{version}-%{release}
+Requires:	tracker
+
+%description tracker
+A plugin for rygel to use tracker to locate media on the local machine.
+
+
+%package -n %{girname}
+Summary:	GObject Introspection interface library for %{name}
+Group:		System/Libraries
+
+Conflicts:	%{name} < 0.36.2-2
+
+%description -n %{girname}
+GObject Introspection interface library for %{name}.
+
+
 %prep
 %setup -q
+%autopatch -p1
 
 %build
-%configure \
-	--disable-media-export-plugin \
-	--enable-test-plugin \
-	--enable-external-plugin \
-	--enable-mediathek-plugin \
-	--enable-gst-launch-plugin \
-	--enable-playbin-plugin \
-	--disable-introspection \
-	--disable-silent-rules LIBS='-lxml2'
-
-%make
+%meson
+%meson_build
 
 %install
-%makeinstall_std
+%meson_install
 
 %find_lang %{name} --with-gnome --with-html
 
 #Remove libtool archives.
 find %{buildroot} -name '*.la' -exec rm -f {} ';'
-
 %files -f %name.lang
-%doc AUTHORS COPYING README TODO NEWS
-%config(noreplace) %{_sysconfdir}/rygel.conf
-%{_bindir}/rygel
-%{_bindir}/rygel-preferences
-%{_libdir}/rygel-%{api}
-%{_datadir}/rygel/
-%{_datadir}/applications/rygel*
+
+%doc AUTHORS COPYING TODO NEWS
+%config(noreplace) %{_sysconfdir}/%{name}.conf
+%{_bindir}/%{name}
+%{_bindir}/%{name}-preferences
+%{_libexecdir}/%{name}/mx-extract
+%{_datadir}/%{name}/
+%{_datadir}/applications/%{name}*
 %{_iconsdir}/*/*/*/*
-%{_mandir}/man?/*
 %{_datadir}/dbus-1/services/org.gnome.Rygel1.service
+%{_userunitdir}/%{name}.service
+#{_mandir}/man?/%{name}*
+
+%dir %{_libdir}/%{name}-%{api}
+%dir %{_libdir}/%{name}-%{api}/plugins
+%{_libdir}/%{name}-%{api}/plugins/*media-export.*
+%{_libdir}/%{name}-%{api}/plugins/*external.*
+%{_libdir}/%{name}-%{api}/plugins/*playbin.*
+%{_libdir}/%{name}-%{api}/plugins/*lms.*
+%{_libdir}/%{name}-%{api}/plugins/*mpris.*
+%{_libdir}/%{name}-%{api}/plugins/*gst-launch.*
+%{_libdir}/%{name}-%{api}/plugins/*ruih.*
+%{_libdir}/%{name}-%{api}/plugins/*example-*.*
+%{_libdir}/%{name}-%{api}/engines/*media-engine-simple.*
+%{_libdir}/%{name}-%{api}/engines/*media-engine-gst.*
 
 %files -n %{libname}
 %{_libdir}/lib*-%{api}.so.%{major}*
@@ -120,10 +155,20 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 %files -n %{devname}
 %{_libdir}/*.so
-%{_includedir}/rygel-%{api}/
-%{_libdir}/pkgconfig/rygel-core-%{api}.pc
-%{_libdir}/pkgconfig/rygel-renderer-%{api}.pc
-%{_libdir}/pkgconfig/rygel-renderer-gst-%{api}.pc
-%{_libdir}/pkgconfig/rygel-server-%{api}.pc
+%{_libdir}/pkgconfig/%{name}-*-%{api}.pc
+%{_libdir}/pkgconfig/rygel-ruih-%{ruihapi}.pc
+%{_includedir}/%{name}-%{api}
 %{_datadir}/vala/vapi/*
-%{_datadir}/gtk-doc/html/librygel-*
+%{_datadir}/gir-1.0/RygelCore-%{girapi}.gir
+%{_datadir}/gir-1.0/RygelRendererGst-%{girapi}.gir
+%{_datadir}/gir-1.0/RygelRenderer-%{girapi}.gir
+%{_datadir}/gir-1.0/RygelServer-%{girapi}.gir
+
+%files tracker
+%{_libdir}/%{name}-%{api}/plugins/*tracker.*
+
+%files -n %{girname}
+%{_libdir}/girepository-1.0/RygelCore-%{girapi}.typelib
+%{_libdir}/girepository-1.0/RygelRendererGst-%{girapi}.typelib
+%{_libdir}/girepository-1.0/RygelRenderer-%{girapi}.typelib
+%{_libdir}/girepository-1.0/RygelServer-%{girapi}.typelib
