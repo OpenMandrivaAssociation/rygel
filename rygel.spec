@@ -22,8 +22,6 @@ Group:		Sound
 License:	LGPLv2+
 URL:		http://live.gnome.org/Rygel
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
-#Patch1:		rygel-0.38.0-fix-icons-path-with-meson.patch
-#Patch2:		rygel-0.38.0-fix-illegal-char-in-pkgconfig-files.patch
 
 BuildRequires:	intltool
 BuildRequires:	meson
