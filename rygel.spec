@@ -16,16 +16,18 @@
 
 Summary:	A UPnP v2 Media Server
 Name:		rygel
-Version:	0.38.4
+Version:	0.40.1
 Release:	1
 Group:		Sound
 License:	LGPLv2+
 URL:		http://live.gnome.org/Rygel
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 
+BuildRequires:  cmake
 BuildRequires:	intltool
 BuildRequires:	meson
 BuildRequires:	vala >= 0.14.1
+BuildRequires:  valadoc
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(gee-0.8)
 BuildRequires:	pkgconfig(gio-2.0) >= 2.26
@@ -35,7 +37,9 @@ BuildRequires:	pkgconfig(gstreamer-app-1.0)
 BuildRequires:	pkgconfig(gstreamer-base-1.0)
 BuildRequires:	pkgconfig(gstreamer-pbutils-1.0)
 BuildRequires:	pkgconfig(gstreamer-tag-1.0)
+BuildRequires:  pkgconfig(gst-editing-services-1.0)
 BuildRequires:	pkgconfig(gtk+-3.0) >= 2.90.3
+BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:	pkgconfig(gupnp-1.2)
 BuildRequires:	pkgconfig(gupnp-av-1.0) >= 0.9.0
 BuildRequires:	pkgconfig(gupnp-dlna-2.0)
@@ -131,6 +135,8 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %{_datadir}/dbus-1/services/org.gnome.Rygel1.service
 %{_userunitdir}/%{name}.service
 #{_mandir}/man?/%{name}*
+%{_mandir}/man1/rygel.1.*
+%{_mandir}/man1/rygel.1.*
 
 %dir %{_libdir}/%{name}-%{api}
 %dir %{_libdir}/%{name}-%{api}/plugins
@@ -164,6 +170,8 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 %files tracker
 %{_libdir}/%{name}-%{api}/plugins/*tracker.*
+%{_libdir}/%{name}-%{api}/plugins/librygel-tracker3.so
+%{_libdir}/%{name}-%{api}/plugins/tracker3.plugin
 
 %files -n %{girname}
 %{_libdir}/girepository-1.0/RygelCore-%{girapi}.typelib
