@@ -135,6 +135,8 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %{_datadir}/dbus-1/services/org.gnome.Rygel1.service
 %{_userunitdir}/%{name}.service
 #{_mandir}/man?/%{name}*
+%{_mandir}/man1/rygel.1.*
+%{_mandir}/man1/rygel.1.*
 
 %dir %{_libdir}/%{name}-%{api}
 %dir %{_libdir}/%{name}-%{api}/plugins
@@ -168,6 +170,8 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 %files tracker
 %{_libdir}/%{name}-%{api}/plugins/*tracker.*
+%{_libdir}/%{name}-%{api}/plugins/librygel-tracker3.so
+%{_libdir}/%{name}-%{api}/plugins/tracker3.plugin
 
 %files -n %{girname}
 %{_libdir}/girepository-1.0/RygelCore-%{girapi}.typelib
