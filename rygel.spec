@@ -136,7 +136,7 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %{_userunitdir}/%{name}.service
 #{_mandir}/man?/%{name}*
 %{_mandir}/man1/rygel.1.*
-%{_mandir}/man1/rygel.1.*
+%{_mandir}/man5/rygel.conf.5.*
 
 %dir %{_libdir}/%{name}-%{api}
 %dir %{_libdir}/%{name}-%{api}/plugins
