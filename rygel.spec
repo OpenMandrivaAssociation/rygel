@@ -169,7 +169,7 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %{_datadir}/gir-1.0/RygelServer-%{girapi}.gir
 
 %files tracker
-%{_libdir}/%{name}-%{api}/plugins/*tracker.*
+#{_libdir}/%{name}-%{api}/plugins/*tracker.*
 %{_libdir}/%{name}-%{api}/plugins/librygel-tracker3.so
 %{_libdir}/%{name}-%{api}/plugins/tracker3.plugin
 
