@@ -2,9 +2,9 @@
 %define _disable_ld_no_undefined 1
 %define _disable_rebuild_configure 1
 
-%define api	2.6
-%define major	2
-%define girapi		2.6
+%define api	2.8
+%define major	0
+%define girapi		2.8
 %define libname %mklibname %{name} %{api} %{major}
 %define devname %mklibname %{name} %{api} -d
 %define girname		%mklibname %{name}-gir %{girapi}
@@ -16,7 +16,7 @@
 
 Summary:	A UPnP v2 Media Server
 Name:		rygel
-Version:	0.40.4
+Version:	0.42.0
 Release:	1
 Group:		Sound
 License:	LGPLv2+
@@ -31,7 +31,7 @@ BuildRequires:  valadoc
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(gee-0.8)
 BuildRequires:	pkgconfig(gio-2.0) >= 2.26
-BuildRequires:	pkgconfig(gssdp-1.2)
+BuildRequires:	pkgconfig(gssdp-1.6)
 BuildRequires:	pkgconfig(gstreamer-1.0)
 BuildRequires:	pkgconfig(gstreamer-app-1.0)
 BuildRequires:	pkgconfig(gstreamer-base-1.0)
@@ -40,11 +40,11 @@ BuildRequires:	pkgconfig(gstreamer-tag-1.0)
 BuildRequires:  pkgconfig(gst-editing-services-1.0)
 BuildRequires:	pkgconfig(gtk+-3.0) >= 2.90.3
 BuildRequires:  pkgconfig(gtk-doc)
-BuildRequires:	pkgconfig(gupnp-1.2)
+BuildRequires:	pkgconfig(gupnp-1.6)
 BuildRequires:	pkgconfig(gupnp-av-1.0) >= 0.9.0
 BuildRequires:	pkgconfig(gupnp-dlna-2.0)
 BuildRequires:	pkgconfig(libmediaart-2.0)
-BuildRequires:	pkgconfig(libsoup-2.4) >= 2.34.0
+BuildRequires:	pkgconfig(libsoup-3.0) >= 2.34.0
 BuildRequires:	pkgconfig(sqlite3) >= 3.5
 BuildRequires:	pkgconfig(uuid) >= 1.41.3
 BuildRequires:	pkgconfig(tracker-sparql-2.0)
