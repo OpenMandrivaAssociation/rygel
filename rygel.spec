@@ -126,7 +126,7 @@ export CXX=g++
 find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %files -f %name.lang
 
-%doc AUTHORS COPYING TODO NEWS
+%doc AUTHORS COPYING NEWS
 %config(noreplace) %{_sysconfdir}/%{name}.conf
 %{_bindir}/%{name}
 %{_bindir}/%{name}-preferences
