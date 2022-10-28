@@ -162,7 +162,7 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %files -n %{devname}
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/%{name}-*-%{api}.pc
-%{_libdir}/pkgconfig/rygel-ruih-%{ruihapi}.pc
+#{_libdir}/pkgconfig/rygel-ruih-%{ruihapi}.pc
 %{_includedir}/%{name}-%{api}
 %{_datadir}/vala/vapi/*
 %{_datadir}/gir-1.0/RygelCore-%{girapi}.gir
