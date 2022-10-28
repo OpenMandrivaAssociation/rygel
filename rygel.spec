@@ -157,7 +157,7 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %{_libdir}/lib*-%{api}.so.%{major}*
 
 %files -n %{libruihname}
-%{_libdir}/librygel-ruih-%{ruihapi}.so.%{ruihmajor}*
+#{_libdir}/librygel-ruih-%{ruihapi}.so.%{ruihmajor}*
 
 %files -n %{devname}
 %{_libdir}/*.so
