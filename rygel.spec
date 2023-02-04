@@ -79,10 +79,10 @@ Shared libraries for %{name}.
 %package -n %{devname}
 Summary:	Development package for %{name}
 Group:		Development/Other
-#Requires:	%{name} = %{version}-%{release}
-#Requires:	%{libname} = %{version}-%{release}
-#Requires:	%{libruihname} = %{version}-%{release}
-#Requires:	%{girname} = %{version}-%{release}
+Requires:	%{name} = %{version}-%{release}
+Requires:	%{libname} = %{version}-%{release}
+Requires:	%{libruihname} = %{version}-%{release}
+Requires:	%{girname} = %{version}-%{release}
 
 %description -n %{devname}
 Files for development with %{name}.
@@ -110,6 +110,10 @@ GObject Introspection interface library for %{name}.
 %prep
 %setup -q
 %autopatch -p1
+
+# fix pkgconf .pc files
+sed -i -e 's/\(rygel.*-\)2\.[0-6]/\1%{api}/g' rygel*.pc.in
+
 
 %build
 export CC=gcc
