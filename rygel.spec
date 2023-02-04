@@ -41,7 +41,7 @@ BuildRequires:  pkgconfig(gst-editing-services-1.0)
 BuildRequires:	pkgconfig(gtk+-3.0) >= 2.90.3
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:	pkgconfig(gupnp-1.6)
-#BuildRequires:	pkgconfig(gupnp-av-1.0) >= 0.9.0
+BuildRequires:	pkgconfig(gupnp-av-1.0) >= 0.9.0
 #BuildRequires:	pkgconfig(gupnp-dlna-2.0)
 BuildRequires:	pkgconfig(libmediaart-2.0)
 BuildRequires:	pkgconfig(libsoup-3.0) >= 2.34.0
