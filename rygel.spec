@@ -31,7 +31,7 @@ BuildRequires:  valadoc
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(gee-0.8)
 BuildRequires:	pkgconfig(gio-2.0) >= 2.26
-#BuildRequires:	pkgconfig(gssdp-1.6)
+BuildRequires:	pkgconfig(gssdp-1.6)
 BuildRequires:	pkgconfig(gstreamer-1.0)
 BuildRequires:	pkgconfig(gstreamer-app-1.0)
 BuildRequires:	pkgconfig(gstreamer-base-1.0)
