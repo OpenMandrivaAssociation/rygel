@@ -64,16 +64,10 @@ in Vala language. The project was previously known as gupnp-media-server.
 %package -n %{libname}
 Summary:	Shared libraries for %{name}
 Group:		System/Libraries
+Obsoletes:	%{_lib}rygel-ruih2.0_1 < %{EVRD}
 
 %description -n %{libname}
-Shared libraries for %{name}.
-
-%package -n %{libruihname}
-Summary:        Shared libraries for %{name}
-Group:          System/Libraries
-
-%description -n %{libruihname}
-Shared libraries for %{name}.
+Shared libraries for %{name}
 
 
 %package -n %{devname}
@@ -116,8 +110,8 @@ sed -i -e 's/\(rygel.*-\)2\.[0-6]/\1%{api}/g' rygel*.pc.in
 
 
 %build
-export CC=gcc
-export CXX=g++
+#export CC=gcc
+#export CXX=g++
 %meson
 %meson_build
 
@@ -159,9 +153,6 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 %files -n %{libname}
 %{_libdir}/lib*-%{api}.so.%{major}*
-
-%files -n %{libruihname}
-#{_libdir}/librygel-ruih-%{ruihapi}.so.%{ruihmajor}*
 
 %files -n %{devname}
 %{_libdir}/*.so
