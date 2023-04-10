@@ -2,9 +2,11 @@
 %define _disable_ld_no_undefined 1
 %define _disable_rebuild_configure 1
 
-%define api	2.6
-%define major	2
-%define girapi		2.6
+%global optflags %{optflags} -Wno-incompatible-function-pointer-types
+
+%define api	2.8
+%define major	0
+%define girapi		2.8
 %define libname %mklibname %{name} %{api} %{major}
 %define devname %mklibname %{name} %{api} -d
 %define girname		%mklibname %{name}-gir %{girapi}
@@ -16,8 +18,8 @@
 
 Summary:	A UPnP v2 Media Server
 Name:		rygel
-Version:	0.40.4
-Release:	2
+Version:	0.42.2
+Release:	1
 Group:		Sound
 License:	LGPLv2+
 URL:		http://live.gnome.org/Rygel
@@ -31,7 +33,7 @@ BuildRequires:  valadoc
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	pkgconfig(gee-0.8)
 BuildRequires:	pkgconfig(gio-2.0) >= 2.26
-BuildRequires:	pkgconfig(gssdp-1.2)
+BuildRequires:	pkgconfig(gssdp-1.6)
 BuildRequires:	pkgconfig(gstreamer-1.0)
 BuildRequires:	pkgconfig(gstreamer-app-1.0)
 BuildRequires:	pkgconfig(gstreamer-base-1.0)
@@ -40,11 +42,11 @@ BuildRequires:	pkgconfig(gstreamer-tag-1.0)
 BuildRequires:  pkgconfig(gst-editing-services-1.0)
 BuildRequires:	pkgconfig(gtk+-3.0) >= 2.90.3
 BuildRequires:  pkgconfig(gtk-doc)
-BuildRequires:	pkgconfig(gupnp-1.2)
+BuildRequires:	pkgconfig(gupnp-1.6)
 BuildRequires:	pkgconfig(gupnp-av-1.0) >= 0.9.0
 BuildRequires:	pkgconfig(gupnp-dlna-2.0)
 BuildRequires:	pkgconfig(libmediaart-2.0)
-BuildRequires:	pkgconfig(libsoup-2.4) >= 2.34.0
+BuildRequires:	pkgconfig(libsoup-3.0) >= 2.34.0
 BuildRequires:	pkgconfig(sqlite3) >= 3.5
 BuildRequires:	pkgconfig(uuid) >= 1.41.3
 BuildRequires:	pkgconfig(tracker-sparql-2.0)
@@ -64,16 +66,10 @@ in Vala language. The project was previously known as gupnp-media-server.
 %package -n %{libname}
 Summary:	Shared libraries for %{name}
 Group:		System/Libraries
+Obsoletes:	%{_lib}rygel-ruih2.0_1 < %{EVRD}
 
 %description -n %{libname}
-Shared libraries for %{name}.
-
-%package -n %{libruihname}
-Summary:        Shared libraries for %{name}
-Group:          System/Libraries
-
-%description -n %{libruihname}
-Shared libraries for %{name}.
+Shared libraries for %{name}
 
 
 %package -n %{devname}
@@ -111,7 +107,13 @@ GObject Introspection interface library for %{name}.
 %setup -q
 %autopatch -p1
 
+# fix pkgconf .pc files
+sed -i -e 's/\(rygel.*-\)2\.[0-6]/\1%{api}/g' rygel*.pc.in
+
+
 %build
+#export CC=gcc
+#export CXX=g++
 %meson
 %meson_build
 
@@ -124,7 +126,7 @@ GObject Introspection interface library for %{name}.
 find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %files -f %name.lang
 
-%doc AUTHORS COPYING TODO NEWS
+%doc AUTHORS COPYING NEWS
 %config(noreplace) %{_sysconfdir}/%{name}.conf
 %{_bindir}/%{name}
 %{_bindir}/%{name}-preferences
@@ -154,13 +156,10 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %files -n %{libname}
 %{_libdir}/lib*-%{api}.so.%{major}*
 
-%files -n %{libruihname}
-%{_libdir}/librygel-ruih-%{ruihapi}.so.%{ruihmajor}*
-
 %files -n %{devname}
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/%{name}-*-%{api}.pc
-%{_libdir}/pkgconfig/rygel-ruih-%{ruihapi}.pc
+#{_libdir}/pkgconfig/rygel-ruih-%{ruihapi}.pc
 %{_includedir}/%{name}-%{api}
 %{_datadir}/vala/vapi/*
 %{_datadir}/gir-1.0/RygelCore-%{girapi}.gir
