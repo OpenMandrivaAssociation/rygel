@@ -2,6 +2,8 @@
 %define _disable_ld_no_undefined 1
 %define _disable_rebuild_configure 1
 
+%global optflags %{optflags} -Wno-incompatible-function-pointer-types
+
 %define api	2.8
 %define major	0
 %define girapi		2.8
