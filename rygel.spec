@@ -77,7 +77,6 @@ Summary:	Development package for %{name}
 Group:		Development/Other
 Requires:	%{name} = %{version}-%{release}
 Requires:	%{libname} = %{version}-%{release}
-Requires:	%{libruihname} = %{version}-%{release}
 Requires:	%{girname} = %{version}-%{release}
 
 %description -n %{devname}
