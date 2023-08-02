@@ -18,7 +18,7 @@
 
 Summary:	A UPnP v2 Media Server
 Name:		rygel
-Version:	0.42.3
+Version:	0.42.4
 Release:	1
 Group:		Sound
 License:	LGPLv2+
