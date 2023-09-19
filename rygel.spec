@@ -19,11 +19,11 @@
 Summary:	A UPnP v2 Media Server
 Name:		rygel
 Version:	0.42.4
-Release:	1
+Release:	2
 Group:		Sound
 License:	LGPLv2+
-URL:		http://live.gnome.org/Rygel
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
+URL:		https://live.gnome.org/Rygel
+Source0:	https://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:  cmake
 BuildRequires:	intltool
