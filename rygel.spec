@@ -1,6 +1,7 @@
 %define url_ver %(echo %{version} | cut -d. -f1,2)
 %define _disable_ld_no_undefined 1
 %define _disable_rebuild_configure 1
+%define _disable_lto 1
 
 %global optflags %{optflags} -Wno-incompatible-function-pointer-types
 
@@ -19,11 +20,12 @@
 Summary:	A UPnP v2 Media Server
 Name:		rygel
 Version:	0.42.4
-Release:	2
+Release:	3
 Group:		Sound
 License:	LGPLv2+
 URL:		https://live.gnome.org/Rygel
 Source0:	https://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
+Patch0:		rygel-fix-build-with-minimized-sqlite.patch
 
 BuildRequires:  cmake
 BuildRequires:	intltool
@@ -103,17 +105,14 @@ GObject Introspection interface library for %{name}.
 
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 # fix pkgconf .pc files
 sed -i -e 's/\(rygel.*-\)2\.[0-6]/\1%{api}/g' rygel*.pc.in
 
+%meson
 
 %build
-#export CC=gcc
-#export CXX=g++
-%meson
 %meson_build
 
 %install
@@ -121,10 +120,7 @@ sed -i -e 's/\(rygel.*-\)2\.[0-6]/\1%{api}/g' rygel*.pc.in
 
 %find_lang %{name} --with-gnome --with-html
 
-#Remove libtool archives.
-find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %files -f %name.lang
-
 %doc AUTHORS COPYING NEWS
 %config(noreplace) %{_sysconfdir}/%{name}.conf
 %{_bindir}/%{name}

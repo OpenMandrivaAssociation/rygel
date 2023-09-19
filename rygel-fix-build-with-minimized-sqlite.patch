@@ -1,0 +1,20 @@
+diff -up rygel-0.42.4/src/librygel-db/database.vala.omv~ rygel-0.42.4/src/librygel-db/database.vala
+--- rygel-0.42.4/src/librygel-db/database.vala.omv~	2023-09-19 23:19:50.120639901 +0200
++++ rygel-0.42.4/src/librygel-db/database.vala	2023-09-19 23:20:40.694687260 +0200
+@@ -200,14 +200,14 @@ public class Rygel.Database.Database : O
+                                   Sqlite.UTF8,
+                                   Database.utf8_collate);
+ 
+-        try {
++/*        try {
+             var config = MetaConfig.get_default ();
+             if (config.get_bool ("Database", "Debug")) {
+                 this.db.trace (this.on_trace);
+             }
+         } catch (Error error) {
+             debug ("Not setting up SQL tracing");
+-        }
++        } */
+ 
+         return true;
+     }
