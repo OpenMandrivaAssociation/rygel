@@ -140,7 +140,7 @@ sed -i -e 's/\(rygel.*-\)2\.[0-6]/\1%{api}/g' rygel*.pc.in
 %{_libdir}/%{name}-%{api}/plugins/*media-export.*
 %{_libdir}/%{name}-%{api}/plugins/*external.*
 %{_libdir}/%{name}-%{api}/plugins/*playbin.*
-%{_libdir}/%{name}-%{api}/plugins/*lms.*
+#{_libdir}/%{name}-%{api}/plugins/*lms.*
 %{_libdir}/%{name}-%{api}/plugins/*mpris.*
 %{_libdir}/%{name}-%{api}/plugins/*gst-launch.*
 %{_libdir}/%{name}-%{api}/plugins/*ruih.*
