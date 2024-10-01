@@ -20,7 +20,7 @@
 Summary:	A UPnP v2 Media Server
 Name:		rygel
 Version:	0.44.0
-Release:	1
+Release:	2
 Group:		Sound
 License:	LGPLv2+
 URL:		https://live.gnome.org/Rygel
@@ -51,8 +51,8 @@ BuildRequires:	pkgconfig(libmediaart-2.0)
 BuildRequires:	pkgconfig(libsoup-3.0) >= 2.34.0
 BuildRequires:	pkgconfig(sqlite3) >= 3.5
 BuildRequires:	pkgconfig(uuid) >= 1.41.3
-BuildRequires:	pkgconfig(tracker-sparql-2.0)
-BuildRequires:	tracker-vala
+BuildRequires:	pkgconfig(tinysparql-3.0)
+BuildRequires:	tinysparql-vala
 
 Requires:	shared-mime-info
 Requires:	gstreamer1.0-plugins-good
