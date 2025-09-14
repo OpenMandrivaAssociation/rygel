@@ -163,9 +163,8 @@ sed -i -e 's/\(rygel.*-\)2\.[0-6]/\1%{api}/g' rygel*.pc.in
 %{_datadir}/gir-1.0/RygelServer-%{girapi}.gir
 
 %files tracker
-#{_libdir}/%{name}-%{api}/plugins/*tracker.*
-%{_libdir}/%{name}-%{api}/plugins/librygel-tracker3.so
-%{_libdir}/%{name}-%{api}/plugins/tracker3.plugin
+%{_libdir}/%{name}-%{api}/plugins/librygel-localsearch.so
+%{_libdir}/%{name}-%{api}/plugins/localsearch.plugin
 
 %files -n %{girname}
 %{_libdir}/girepository-1.0/RygelCore-%{girapi}.typelib
