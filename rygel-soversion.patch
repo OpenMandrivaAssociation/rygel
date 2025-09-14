@@ -1,0 +1,72 @@
+diff --git a/src/librygel-core/meson.build b/src/librygel-core/meson.build
+index 8d63006..3d026f5 100644
+--- a/src/librygel-core/meson.build
++++ b/src/librygel-core/meson.build
+@@ -44,6 +44,6 @@ core_lib = library('rygel-core-2.8', core_sources,
+         dependencies : core_deps,
+         include_directories: [config_include, include_directories('.')],
+-        version: lib_version,
++        soversion: soversion,
+         darwin_versions: darwin_versions,
+         c_args : ['-DG_LOG_DOMAIN="RygelCore"'],
+         vala_gir : 'Rygel-2.8.gir',
+diff --git a/src/librygel-db/meson.build b/src/librygel-db/meson.build
+index 068c92d..35b3fec 100644
+--- a/src/librygel-db/meson.build
++++ b/src/librygel-db/meson.build
+@@ -10,6 +10,6 @@ db_lib = library('rygel-db-2.8', db_sources,
+         dependencies : db_deps + [rygel_core],
+         include_directories: [config_include, include_directories('.')],
+-        version: lib_version,
++        soversion: soversion,
+         darwin_versions: darwin_versions,
+         c_args : ['-DG_LOG_DOMAIN="RygelDb"'],
+         vala_header : 'rygel-db.h',
+diff --git a/src/librygel-renderer-gst/meson.build b/src/librygel-renderer-gst/meson.build
+index 1c1b879..860fc64 100644
+--- a/src/librygel-renderer-gst/meson.build
++++ b/src/librygel-renderer-gst/meson.build
+@@ -6,6 +6,6 @@ renderer_gst_sources = files(
+ renderer_gst_lib = library('rygel-renderer-gst-2.8', renderer_gst_sources,
+         dependencies : renderer_gst_deps + [build_config, rygel_core, rygel_renderer],
+-        version: lib_version,
++        soversion: soversion,
+         darwin_versions : darwin_versions,
+         c_args : ['-DG_LOG_DOMAIN="RygelRendererGst"'],
+         vala_gir : 'Rygel-2.8.gir',
+diff --git a/src/librygel-renderer/meson.build b/src/librygel-renderer/meson.build
+index 27f7aab..b2d3b3f 100644
+--- a/src/librygel-renderer/meson.build
++++ b/src/librygel-renderer/meson.build
+@@ -15,6 +15,6 @@ renderer_sources = files(
+ renderer_lib = library('rygel-renderer-2.8', renderer_sources,
+         dependencies : renderer_deps + [build_config, rygel_core],
+-        version: lib_version,
++        soversion: soversion,
+         darwin_versions : darwin_versions,
+         c_args : ['-DG_LOG_DOMAIN="RygelRenderer"'],
+         vala_gir : 'Rygel-2.8.gir',
+diff --git a/src/librygel-ruih/meson.build b/src/librygel-ruih/meson.build
+index 8724c04..df1e624 100644
+--- a/src/librygel-ruih/meson.build
++++ b/src/librygel-ruih/meson.build
+@@ -15,6 +15,6 @@ ruih_sources = [
+ ruih_lib = library('rygel-ruih-2.8', ruih_sources,
+         dependencies : ruih_deps + [build_config, rygel_core],
+-        version: lib_version,
++        soversion: soversion,
+         darwin_versions : darwin_versions,
+         c_args : ['-DG_LOG_DOMAIN="RygelRuih"'],
+         vala_header : 'rygel-ruih.h',
+diff --git a/src/librygel-server/meson.build b/src/librygel-server/meson.build
+index 473ea11..3e28557 100644
+--- a/src/librygel-server/meson.build
++++ b/src/librygel-server/meson.build
+@@ -94,6 +94,6 @@ server_sources = files(
+ server_lib = library('rygel-server-2.8', server_sources,
+         dependencies : server_deps + [build_config, rygel_core],
+-        version: lib_version,
++        soversion: soversion,
+         darwin_versions: darwin_versions,
+         c_args : ['-DG_LOG_DOMAIN="RygelServer"'],
+         vala_gir : 'Rygel-2.8.gir',
