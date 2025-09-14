@@ -42,7 +42,7 @@ BuildRequires:	pkgconfig(gstreamer-base-1.0)
 BuildRequires:	pkgconfig(gstreamer-pbutils-1.0)
 BuildRequires:	pkgconfig(gstreamer-tag-1.0)
 BuildRequires:  pkgconfig(gst-editing-services-1.0)
-BuildRequires:	pkgconfig(gtk+-3.0) >= 2.90.3
+BuildRequires:	pkgconfig(gtk4)
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:	pkgconfig(gupnp-1.6)
 BuildRequires:	pkgconfig(gupnp-av-1.0) >= 0.9.0
