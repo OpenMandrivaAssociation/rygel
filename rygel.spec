@@ -26,6 +26,8 @@ License:	LGPLv2+
 URL:		https://live.gnome.org/Rygel
 Source0:	https://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 Patch0:		rygel-fix-build-with-minimized-sqlite.patch
+# mga patch
+Patch1:   rygel-soversion.patch
 
 BuildRequires:  cmake
 BuildRequires:	intltool
