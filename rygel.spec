@@ -19,7 +19,7 @@
 
 Summary:	A UPnP v2 Media Server
 Name:		rygel
-Version:	45.2
+Version:	46.1
 Release:	1
 Group:		Sound
 License:	LGPLv2+
@@ -55,6 +55,8 @@ BuildRequires:	pkgconfig(sqlite3) >= 3.5
 BuildRequires:	pkgconfig(uuid) >= 1.41.3
 BuildRequires:	pkgconfig(tinysparql-3.0)
 BuildRequires:	tinysparql-vala
+BuildRequires:	python3dist(docutils)            
+BuildRequires:	python3dist(pyyaml)
 
 Requires:	shared-mime-info
 Requires:	gstreamer1.0-plugins-good
@@ -145,7 +147,6 @@ sed -i -e 's/\(rygel.*-\)2\.[0-6]/\1%{api}/g' rygel*.pc.in
 #{_libdir}/%{name}-%{api}/plugins/*lms.*
 %{_libdir}/%{name}-%{api}/plugins/*mpris.*
 %{_libdir}/%{name}-%{api}/plugins/*gst-launch.*
-%{_libdir}/%{name}-%{api}/plugins/*ruih.*
 %{_libdir}/%{name}-%{api}/plugins/*example-*.*
 %{_libdir}/%{name}-%{api}/engines/*media-engine-simple.*
 %{_libdir}/%{name}-%{api}/engines/*media-engine-gst.*
@@ -156,7 +157,6 @@ sed -i -e 's/\(rygel.*-\)2\.[0-6]/\1%{api}/g' rygel*.pc.in
 %files -n %{devname}
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/%{name}-*-%{api}.pc
-#{_libdir}/pkgconfig/rygel-ruih-%{ruihapi}.pc
 %{_includedir}/%{name}-%{api}
 %{_datadir}/vala/vapi/*
 %{_datadir}/gir-1.0/RygelCore-%{girapi}.gir
